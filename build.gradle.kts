@@ -12,24 +12,19 @@ repositories {
     mavenCentral()
 }
 
-
 val junitVersion: String = "5.7.2"
-val compileKotlin: KotlinCompile by tasks
-val compileTestKotlin: KotlinCompile by tasks
-
-compileKotlin.kotlinOptions.suppressWarnings = true
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.21")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testImplementation("com.natpryce:hamkrest:1.8.0.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 tasks {
-    withType<KotlinCompile>().configureEach {
+    withType<KotlinCompile>{
         kotlinOptions {
-            jvmTarget = "16"
+            jvmTarget = "11"
         }
     }
     withType<Test> {
