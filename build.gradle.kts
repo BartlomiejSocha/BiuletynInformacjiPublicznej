@@ -2,8 +2,11 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.5.21"
+    kotlin("jvm") version "1.4.32"
+    id("org.jmailen.kotlinter") version "3.3.0"
+
 }
+
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
@@ -15,10 +18,10 @@ repositories {
 val junitVersion: String = "5.7.2"
 
 dependencies {
+    implementation(kotlin("stdlib-jdk8"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testImplementation("com.natpryce:hamkrest:1.8.0.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
-    implementation(kotlin("stdlib-jdk8"))
 }
 
 tasks {
