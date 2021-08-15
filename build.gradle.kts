@@ -4,9 +4,13 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.4.32"
     id("org.jmailen.kotlinter") version "3.3.0"
-
 }
 
+tasks.jar {
+    manifest {
+        attributes (mapOf(Pair("Main-Class", "clarify.app.kt")))
+    }
+}
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
