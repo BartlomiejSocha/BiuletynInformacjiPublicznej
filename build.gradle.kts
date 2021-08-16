@@ -33,17 +33,23 @@ dependencies {
 }
 
 tasks {
-    withType<KotlinCompile>{
+    withType<KotlinCompile> {
         kotlinOptions {
             jvmTarget = "11"
         }
     }
     withType<Test> {
         useJUnitPlatform()
+        include ("**/Test*.class")
         testLogging {
             showExceptions = true
             exceptionFormat = TestExceptionFormat.FULL
             events("passed", "skipped", "failed")
         }
     }
+}
+
+extensions.findByName("buildScan")?.withGroovyBuilder {
+    setProperty("termsOfServiceUrl", "https://gradle.com/terms-of-service")
+    setProperty("termsOfServiceAgree", "yes")
 }
