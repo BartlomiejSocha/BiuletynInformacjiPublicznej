@@ -49,6 +49,7 @@ tasks {
     }
 }
 
+//To accept terms of use for --scan: RUN gradle clean build --scan --no-daemon
 extensions.findByName("buildScan")?.withGroovyBuilder {
     setProperty("termsOfServiceUrl", "https://gradle.com/terms-of-service")
     setProperty("termsOfServiceAgree", "yes")
